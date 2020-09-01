@@ -4,7 +4,8 @@ import set from 'lodash/set';
 export const defaultAuthState = {
   isAuth: null,
   source: null,
-  data: null
+  data: null,
+  access_token: localStorage.getItem('access_token')
 };
 
 export const authSlice = createSlice({
@@ -16,11 +17,14 @@ export const authSlice = createSlice({
       set(state, `source`, action.payload.source);
     },
     dataUser: (state, action) => {
-      set(state, `data`, action.payload);
-    }
+      set(state, `data`, action.payload.data);
+    },
+    setToken:(state, action) => {
+      set(state, `access_token`, action.payload.access_token);
+    },
   },
 });
 
-export const { logUser, dataUser } = authSlice.actions;
+export const { logUser, dataUser, setToken } = authSlice.actions;
 
 export default authSlice.reducer;

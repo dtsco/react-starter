@@ -8,17 +8,24 @@ import history from './history';
 import * as serviceWorker from './serviceWorker';
 import './index.css';
 import './i18n';
+import Auth from 'utils/AuthProvider/index';
 
 import './tailwind.generated.css';
 
 const appStore = generateStore(history);
 
 ReactDOM.render(
-  <Provider store={appStore}>
-    <ConnectedRouter history={history}>
-      <PrivateRoute />
-    </ConnectedRouter>
-  </Provider>,
+  
+    <Provider store={appStore}>
+      <Auth>
+      <ConnectedRouter history={history}>
+        <PrivateRoute />
+      </ConnectedRouter>
+      </Auth>
+
+    </Provider>
+,
+
   document.getElementById('root'),
 );
 

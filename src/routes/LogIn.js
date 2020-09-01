@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import DefaultLayout from 'layout/default/index';
-import Auth from 'pages/LogIn/index';
+import Auth from 'pages/Auth/index';
 function LogInRouter() {
   return (
     <DefaultLayout>

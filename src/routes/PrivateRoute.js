@@ -1,20 +1,16 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import {
-  userIsAuthenticatedRedir,
-  userIsNotAuthenticatedRedir,
-} from './auth';
+import { userIsAuthenticatedRedir, userIsNotAuthenticatedRedir } from './auth';
 import LoginRouter from './LogIn';
 import RootRouter from './Root';
+
 
 export function PrivateRoute() {
   return (
     <>
       <Switch>
         <Route
-          path={[
-            '/home'
-          ]}
+          path={['/home']}
           component={userIsAuthenticatedRedir(RootRouter)}
         />
         <Route
@@ -26,4 +22,4 @@ export function PrivateRoute() {
     </>
   );
 }
-export default PrivateRoute; 
+export default PrivateRoute;

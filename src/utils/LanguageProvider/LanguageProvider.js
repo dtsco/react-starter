@@ -8,31 +8,14 @@ import ru_RU from 'antd/es/locale/ru_RU';
 import en_US from 'antd/es/locale/en_US';
 import 'moment/locale/ru';
 import 'moment/locale/en-gb';
-import { ME } from 'api';
-import useFetch from 'utils/fetch/useFetch';
+
 
 function LanguageProvider({ children }) {
   const { i18n } = useTranslation();
   const currentLang = useSelector((state) =>
     get(state, `fetch.me.dataSource.language`, 'en'),
   );
-
   const [lang, setLang] = useState(en_US);
-  const { data } = useFetch(ME, {
-    uniqId: 'language',
-    autoFetch: true,
-  });
-
-  useEffect(() => {
-    if (data && data.language === 'en') {
-      i18n.changeLanguage('en');
-      moment.locale('en');
-    } else if (data && data.language === 'ru') {
-      i18n.changeLanguage('ru');
-      moment.locale('ru');
-    }
-  }, [data]);
-
   useEffect(() => {
     if (currentLang === 'ru') {
       setLang(ru_RU);

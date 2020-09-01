@@ -8,7 +8,6 @@ import { GET_LIST, GET_SINGLE } from '../../utils/fetch/fetchTypes';
 export function* fetchRequest(action) {
   const { uniqId, params = {}, meta = {} } = action.payload;
   try {
-    console.log(meta, params);
     const { fetchType, push, sync, onSync, getSyncData, query = null } = meta;
     const dataInstance = dataProvider();
     const apiKey = yield select(
